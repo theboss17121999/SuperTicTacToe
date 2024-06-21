@@ -1,16 +1,28 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { ThreeXThreeAtomFamily, TrunAtom } from "../Store/ThreeXThree/Three";
+import { ThreeXThreeAtomFamily, ThreeXThreeValuesSelector, TrunAtom } from "../Store/ThreeXThree/Three";
 import { useClickAndTurn } from "../Hooks/ClickAndTurn";
 import { useRenderContent } from "../Hooks/DisplayPlayIcon";
+import { ThreeXThree1 } from "../Store/Data/3X3";
 
 export const ThreeCrossThree = () => {
+
+  const renderBox = (id, val) => {
+    return (
+      <React.Fragment key={id}>
+        <Box id={id} val={val} />
+        {/* <DisplayValues /> */}
+      </React.Fragment>
+    );
+  };
+
   return (
-    <div className="grid grid-cols-3 grid-rows-3 w-96 h-96">
-      {Array.from({ length: 9 }, (_, index) => (
-        <Box key={index + 1} id={index + 1} />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-3 grid-rows-3 w-96 h-96">
+        {ThreeXThree1.map(item => renderBox(item.id, item.val))}
+      </div>
+      <DisplayValues />
+    </>
   );
 };
 
@@ -46,4 +58,16 @@ function Box({ id }) {
   );
 }
 
-export default Box;
+const DisplayValues = () => {
+  const values = useRecoilValue(ThreeXThreeValuesSelector);
+
+  return (
+    <div>
+      {values.map((value, index) => (
+        <div key={index}>Value {index + 1}: {value}</div>
+      ))}
+    </div>
+  );
+}
+
+export default ThreeCrossThree;
