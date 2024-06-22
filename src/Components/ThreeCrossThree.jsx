@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { ThreeXThreeAtomFamily, ThreeXThreeValuesSelector, ThreeXthreeWinnerSelector, TurnAtom, Winner } from "../Store/ThreeXThree/Three";
+import { ThreeXThreeAtomFamily, TurnAtom, Winner } from "../Store/ThreeXThree/AtomFamilyforBoard";
 import { useClickAndTurn } from "../Hooks/ClickAndTurn";
 import { useRenderContent } from "../Hooks/DisplayPlayIcon";
 import { ThreeXThree1 } from "../Store/Data/3X3";
+import { useWinnerById } from "../Hooks/gridWinner";
 
-export const ThreeCrossThree = () => {
+export const ThreeCrossThree = ({ num }) => {
   const [gameWinner, setGameWinner] = useRecoilState(Winner);
-  const winner = useRecoilValue(ThreeXthreeWinnerSelector);
-  
+  const winner = useWinnerById(num);
   useEffect(() => {
     if (winner !== 0) {
       setGameWinner(winner);
@@ -25,10 +25,9 @@ export const ThreeCrossThree = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 grid-rows-3 w-96 h-96">
-        {ThreeXThree1.map(item => renderBox(item.id, item.val))}
+      <div className="grid grid-cols-3 grid-rows-3 w-96 h-96 m-0 p-0">
+        {ThreeXThree1.slice((num-1) * 9, num * 9).map(item => renderBox(item.id, item.val))}
       </div>
-      {gameWinner}
     </>
   );
 };
@@ -65,16 +64,6 @@ function Box({ id }) {
   );
 }
 
-const DisplayValues = () => {
-  const values = useRecoilValue(ThreeXThreeValuesSelector);
 
-  return (
-    <div>
-      {values.map((value, index) => (
-        <div key={index}>Value {index + 1}: {value}</div>
-      ))}
-    </div>
-  );
-}
 
 export default ThreeCrossThree;

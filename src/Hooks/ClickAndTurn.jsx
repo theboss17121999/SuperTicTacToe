@@ -1,11 +1,12 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { ThreeXThreeAtomFamily, ThreeXThreeValuesSelector, ThreeXthreeWinnerSelector, TurnAtom, Winner } from "../Store/ThreeXThree/Three";
+import { ThreeXThreeAtomFamily, TurnAtom } from "../Store/ThreeXThree/AtomFamilyforBoard";
+import { ThreeXThreeValuesSelector11_19 } from "../Store/ThreeXThree/SelectorFamilyforValues";
+import { useStateById } from "./gridState";
 
 export function useClickAndTurn(id) {
   const setValue = useSetRecoilState(ThreeXThreeAtomFamily(id));
-  const setDisable = useSetRecoilState(ThreeXThreeValuesSelector);
+  const setDisable = useStateById(parseInt(id / 10));
   const [turn, setTurn] = useRecoilState(TurnAtom);
-  const setWinner = useRecoilState(Winner);
 
   const changeState = () => {
     setValue({ val: turn, disable: true });
