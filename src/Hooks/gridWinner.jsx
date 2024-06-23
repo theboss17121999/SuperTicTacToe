@@ -9,7 +9,7 @@ import {
     ThreeXthreeWinnerSelector71_79,
     ThreeXthreeWinnerSelector81_89,
     ThreeXthreeWinnerSelector91_99
-} from "../Store/ThreeXThree/SelectorFamilyforWinner";
+} from "../Store/NineXNine/SelectorFamilyforWinner";
 
 export function useWinnerById(id) {
     let selector;

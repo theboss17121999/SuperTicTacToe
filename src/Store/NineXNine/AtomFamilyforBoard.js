@@ -1,10 +1,10 @@
 import { atom, atomFamily, selector } from "recoil";
-import { ThreeXThree1 } from "../Data/3X3";
+import { NineXNine1 } from "../Data/9X9";
 
 export const ThreeXThreeAtomFamily = atomFamily({
-  key: 'ThreeXThreeAtomFamily',
+  key: 'NineXNineAtomFamily',
   default: id => {
-    return ThreeXThree1.find(x => x.id === id);
+    return NineXNine1.find(x => x.id === id);
   },
 });
 

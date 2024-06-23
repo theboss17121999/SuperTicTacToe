@@ -9,7 +9,7 @@ import {
     ThreeXThreeValuesSelector71_79, 
     ThreeXThreeValuesSelector81_89, 
     ThreeXThreeValuesSelector91_99 
-} from "../Store/ThreeXThree/SelectorFamilyforValues";
+} from "../Store/NineXNine/SelectorFamilyforValues";
 
 export function useStateById(id) {
     if(id === 1){

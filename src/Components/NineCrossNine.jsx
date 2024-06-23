@@ -1,7 +1,7 @@
 import React from "react";
 import ThreeCrossThree from "./ThreeCrossThree";
 import { useRecoilValue } from "recoil";
-import { ThreeXThreeValuesSelector11_19 } from "../Store/ThreeXThree/SelectorFamilyforValues";
+import { ThreeXThreeValuesSelector11_19 } from "../Store/NineXNine/SelectorFamilyforValues";
 import { useValueById } from "../Hooks/gridValue";
 
 export const NineCrossNine = () => {

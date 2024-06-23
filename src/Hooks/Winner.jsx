@@ -1,6 +1,6 @@
 import { ThreeXThree1 } from "../Store/Data/3X3";
 import React from "react";
-import { ThreeXThreeAtomFamily } from "../Store/ThreeXThree/Three";
+import { ThreeXThreeAtomFamily } from "../Store/NineXNine/Three";
 import { useRecoilValue } from "recoil";
 
 export function useWinner() {
