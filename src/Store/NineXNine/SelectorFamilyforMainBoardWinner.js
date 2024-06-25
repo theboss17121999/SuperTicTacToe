@@ -17,7 +17,7 @@ const createSelectorForRange = (start , winner) =>
     set: ({ set, get }, newValue) => {
       set(NineXNineAtomFamily(start), (prev) => ({
         ...prev,
-        val: (winner===1)?1:-1,
+        val: (winner===1)?1:(winner===-1)?-1:3,
         disable: true,
       }));
       const values = [];
@@ -25,7 +25,7 @@ const createSelectorForRange = (start , winner) =>
         const atomValue = get(NineXNineAtomFamily(i));
         values.push(atomValue.val);
       }
-      values[start-1]=(winner===1)?1:-1;
+      values[start-1]=(winner===1)?1:(winner===-1)?-1:3;
       console.log("3X3 grid", values);
 
     },
@@ -50,3 +50,13 @@ export const NineXNineValuesSelectorWinner62 = createSelectorForRange(6,2);
 export const NineXNineValuesSelectorWinner72 = createSelectorForRange(7,2);
 export const NineXNineValuesSelectorWinner82 = createSelectorForRange(8,2);
 export const NineXNineValuesSelectorWinner92 = createSelectorForRange(9,2);
+
+export const NineXNineValuesSelectorWinner13 = createSelectorForRange(1,3);
+export const NineXNineValuesSelectorWinner23 = createSelectorForRange(2,3);
+export const NineXNineValuesSelectorWinner33 = createSelectorForRange(3,3);
+export const NineXNineValuesSelectorWinner43 = createSelectorForRange(4,3);
+export const NineXNineValuesSelectorWinner53 = createSelectorForRange(5,3);
+export const NineXNineValuesSelectorWinner63 = createSelectorForRange(6,3);
+export const NineXNineValuesSelectorWinner73 = createSelectorForRange(7,3);
+export const NineXNineValuesSelectorWinner83 = createSelectorForRange(8,3);
+export const NineXNineValuesSelectorWinner93 = createSelectorForRange(9,3);

@@ -3,7 +3,7 @@ import { ThreeXThreeAtomFamily } from "./AtomFamilyforBoard";
 import { NineXNineAtomFamily } from "./AtomFamilyforMainBoard";
 
 const checkWinner = (values, a, b, c) => {
-  return values[a] !== 0 && values[a] === values[b] && values[a] === values[c];
+  return values[a] !== 0 && values[a]!==3 && values[a] === values[b] && values[a] === values[c];
 };
 
 const winningCombinations = [
@@ -33,7 +33,13 @@ const createSelector = () =>
           return values[a];
         }
       }
-      return 0; // Default return value if no winner is detected
+
+      for(let i=0;i<=9;i++){
+        if(values[i]===0){
+            return 0;
+        }
+      }
+      return 3; // Default return value if no winner is detected
     }
   });
 

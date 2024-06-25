@@ -7,21 +7,27 @@ import { NineXNine1 } from "../Store/Data/9X9";
 import { useWinnerById } from "../Hooks/gridWinner";
 import { useMainBoardWinnerP1 } from "../Hooks/MainBoardWinnerP1";
 import { useMainBoardWinnerP2 } from "../Hooks/MainBoardWinnerP2";
+import { useMainBoardDraw } from "../Hooks/MainBoardDraw";
 
 export const ThreeCrossThree = ({ num }) => {
   const setGameWinner = useSetRecoilState(Winner);
   const winner = useWinnerById(num);
   const winneronMainBoardP1 = useMainBoardWinnerP1(num);
   const winneronMainBoardP2 = useMainBoardWinnerP2(num);
+  const winneronMainBoardDraw = useMainBoardDraw(num);
 
   useEffect(() => {
     if (winner !== 0 ) {
       setGameWinner(winner);
       console.log({num});
+      console.log(winner);
       if(winner === 1)
         winneronMainBoardP1();
       else
-        winneronMainBoardP2();
+        if(winner === -1)
+          winneronMainBoardP2();
+        else 
+          winneronMainBoardDraw();         
     }
   }, [winner, setGameWinner, winneronMainBoardP1, winneronMainBoardP2 ]);
 
@@ -32,8 +38,22 @@ export const ThreeCrossThree = ({ num }) => {
   );
 
   return (
-    <div className="grid grid-cols-3 grid-rows-3 w-96 h-96 m-0 p-0">
-      {NineXNine1.slice((num - 1) * 9, num * 9).map(item => renderBox(item.id, item.val))}
+    <div>
+      {winner === 0 ? (
+        <div className="grid grid-cols-3 grid-rows-3 w-21 h-21 m-1 p-1 border-2 border-gray-300">
+          {NineXNine1.slice((num - 1) * 9, num * 9).map(item => renderBox(item.id, item.val))}
+        </div>
+      ) : winner === 3 ? (
+        <div className="bg-red-500 w-21 h-21 m-1 p-1 border-2 border-gray-300 flex items-center justify-center">
+          It is a draw
+        </div>
+      ) : (
+        <div className="bg-red-500 w-21 h-21 m-1 p-1 border-2 border-gray-300 flex items-center justify-center">
+          <div className="w-full">
+            {useRenderContent(winner)}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -57,7 +77,7 @@ function Box({ id }) {
       onClick={changeState}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative bg-black w-full h-full max-h-full border-4 border-indigo-600"
+      className="relative bg-black w-7 h-7 max-h-full border-4 border-indigo-600"
       disabled={value.disable !== false}
     >
       <div className="flex items-center justify-center w-full h-full">

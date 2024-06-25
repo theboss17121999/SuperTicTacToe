@@ -32,8 +32,12 @@ const createSelectorForRange = (start, end) =>
           return values[a];
         }
       }
-
-      return 0; // Default return value if no winner is detected
+      for(let i=0;i<=9;i++){
+        if(values[i]===0){
+            return 0;
+        }
+      }
+      return 3;
     }
   });
 
