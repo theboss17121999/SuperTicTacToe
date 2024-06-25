@@ -5,19 +5,25 @@ import { useClickAndTurn } from "../Hooks/ClickAndTurn";
 import { useRenderContent } from "../Hooks/DisplayPlayIcon";
 import { NineXNine1 } from "../Store/Data/9X9";
 import { useWinnerById } from "../Hooks/gridWinner";
-import { NineXNineValuesSelectorWinner1 } from "../Store/NineXNine/SelectorFamilyforMainBoardWinner";
+import { useMainBoardWinnerP1 } from "../Hooks/MainBoardWinnerP1";
+import { useMainBoardWinnerP2 } from "../Hooks/MainBoardWinnerP2";
 
 export const ThreeCrossThree = ({ num }) => {
-  const [gameWinner, setGameWinner] = useRecoilState(Winner);
+  const setGameWinner = useSetRecoilState(Winner);
   const winner = useWinnerById(num);
-  const setWinneron3X3 = useSetRecoilState(NineXNineValuesSelectorWinner1);
+  const winneronMainBoardP1 = useMainBoardWinnerP1(num);
+  const winneronMainBoardP2 = useMainBoardWinnerP2(num);
 
   useEffect(() => {
-    if (winner !== 0) {
+    if (winner !== 0 ) {
       setGameWinner(winner);
-      setWinneron3X3();
+      console.log({num});
+      if(winner === 1)
+        winneronMainBoardP1();
+      else
+        winneronMainBoardP2();
     }
-  }, [winner, setGameWinner,  setWinneron3X3 ]);
+  }, [winner, setGameWinner, winneronMainBoardP1, winneronMainBoardP2 ]);
 
   const renderBox = (id, val) => (
     <React.Fragment key={id}>

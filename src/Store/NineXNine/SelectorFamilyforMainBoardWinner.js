@@ -1,9 +1,9 @@
 import { selector } from "recoil";
 import { NineXNineAtomFamily } from "./AtomFamilyforMainBoard";
 
-const createSelectorForRange = (start) =>
+const createSelectorForRange = (start , winner) =>
   selector({
-    key: `NineXNineValuesSelector${start}`,
+    key: `NineXNineValuesSelector${start}_${winner}`,
     get: ({ get }) => {
       const values = [];
       for (let i = 1; i <= 9; i++) {
@@ -17,7 +17,7 @@ const createSelectorForRange = (start) =>
     set: ({ set, get }, newValue) => {
       set(NineXNineAtomFamily(start), (prev) => ({
         ...prev,
-        val: 1,
+        val: (winner===1)?1:-1,
         disable: true,
       }));
       const values = [];
@@ -25,18 +25,28 @@ const createSelectorForRange = (start) =>
         const atomValue = get(NineXNineAtomFamily(i));
         values.push(atomValue.val);
       }
-      values[start-1]=1;
+      values[start-1]=(winner===1)?1:-1;
       console.log("3X3 grid", values);
 
     },
   });
 
-export const NineXNineValuesSelectorWinner1 = createSelectorForRange(1);
-export const NineXNineValuesSelectorWinner2 = createSelectorForRange(2);
-export const NineXNineValuesSelectorWinner3 = createSelectorForRange(3);
-export const NineXNineValuesSelectorWinner4 = createSelectorForRange(4);
-export const NineXNineValuesSelectorWinner5 = createSelectorForRange(5);
-export const NineXNineValuesSelectorWinner6 = createSelectorForRange(6);
-export const NineXNineValuesSelectorWinner7 = createSelectorForRange(7);
-export const NineXNineValuesSelectorWinner8 = createSelectorForRange(8);
-export const NineXNineValuesSelectorWinner9 = createSelectorForRange(9);
+export const NineXNineValuesSelectorWinner11 = createSelectorForRange(1,1);
+export const NineXNineValuesSelectorWinner21 = createSelectorForRange(2,1);
+export const NineXNineValuesSelectorWinner31 = createSelectorForRange(3,1);
+export const NineXNineValuesSelectorWinner41 = createSelectorForRange(4,1);
+export const NineXNineValuesSelectorWinner51 = createSelectorForRange(5,1);
+export const NineXNineValuesSelectorWinner61 = createSelectorForRange(6,1);
+export const NineXNineValuesSelectorWinner71 = createSelectorForRange(7,1);
+export const NineXNineValuesSelectorWinner81 = createSelectorForRange(8,1);
+export const NineXNineValuesSelectorWinner91 = createSelectorForRange(9,1);
+
+export const NineXNineValuesSelectorWinner12 = createSelectorForRange(1,2);
+export const NineXNineValuesSelectorWinner22 = createSelectorForRange(2,2);
+export const NineXNineValuesSelectorWinner32 = createSelectorForRange(3,2);
+export const NineXNineValuesSelectorWinner42 = createSelectorForRange(4,2);
+export const NineXNineValuesSelectorWinner52 = createSelectorForRange(5,2);
+export const NineXNineValuesSelectorWinner62 = createSelectorForRange(6,2);
+export const NineXNineValuesSelectorWinner72 = createSelectorForRange(7,2);
+export const NineXNineValuesSelectorWinner82 = createSelectorForRange(8,2);
+export const NineXNineValuesSelectorWinner92 = createSelectorForRange(9,2);
