@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { ThreeXThreeAtomFamily } from "./AtomFamilyforBoard";
+import { ThreeXThreeAtomFamily } from "../Atom/AtomFamilyforBoard";
 
 const checkWinner = (values, a, b, c) => {
   return values[a] !== 0 && values[a] === values[b] && values[a] === values[c];

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { ThreeXThreeAtomFamily, TurnAtom, Winner } from "../Store/NineXNine/AtomFamilyforBoard";
+import { ThreeXThreeAtomFamily, TurnAtom, Winner } from "../Store/Atom/AtomFamilyforBoard";
 import { useClickAndTurn } from "../Hooks/ClickAndTurn";
 import { useRenderContent } from "../Hooks/DisplayPlayIcon";
 import { NineXNine1 } from "../Store/Data/9X9";
@@ -8,6 +8,7 @@ import { useWinnerById } from "../Hooks/gridWinner";
 import { useMainBoardWinnerP1 } from "../Hooks/MainBoardWinnerP1";
 import { useMainBoardWinnerP2 } from "../Hooks/MainBoardWinnerP2";
 import { useMainBoardDraw } from "../Hooks/MainBoardDraw";
+import { ActiveCellAtomFamily } from "../Store/Atom/AtomForActiveCell";
 
 export const ThreeCrossThree = ({ num }) => {
   const setGameWinner = useSetRecoilState(Winner);
@@ -15,6 +16,7 @@ export const ThreeCrossThree = ({ num }) => {
   const winneronMainBoardP1 = useMainBoardWinnerP1(num);
   const winneronMainBoardP2 = useMainBoardWinnerP2(num);
   const winneronMainBoardDraw = useMainBoardDraw(num);
+  const atomValue = useRecoilValue(ActiveCellAtomFamily(num));
 
   useEffect(() => {
     if (winner !== 0 ) {
@@ -33,7 +35,7 @@ export const ThreeCrossThree = ({ num }) => {
 
   const renderBox = (id, val) => (
     <React.Fragment key={id}>
-      <Box id={id} val={val} />
+      <Box id={id} val={val} disable={atomValue.disable} />
     </React.Fragment>
   );
 
@@ -58,7 +60,7 @@ export const ThreeCrossThree = ({ num }) => {
   );
 };
 
-function Box({ id }) {
+function Box({ id , disable }) {
   const value = useRecoilValue(ThreeXThreeAtomFamily(id));
   const changeState = useClickAndTurn(id);
   const [isHovered, setIsHovered] = useState(false);
@@ -78,7 +80,7 @@ function Box({ id }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="relative bg-black w-7 h-7 max-h-full border-4 border-indigo-600"
-      disabled={value.disable !== false}
+      disabled={value.disable !== false || disable}
     >
       <div className="flex items-center justify-center w-full h-full">
         <div className="z-2">

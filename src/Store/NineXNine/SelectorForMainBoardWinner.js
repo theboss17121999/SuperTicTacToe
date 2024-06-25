@@ -1,9 +1,9 @@
 import { selector } from "recoil";
-import { ThreeXThreeAtomFamily } from "./AtomFamilyforBoard";
-import { NineXNineAtomFamily } from "./AtomFamilyforMainBoard";
+import { ThreeXThreeAtomFamily } from "../Atom/AtomFamilyforBoard";
+import { NineXNineAtomFamily } from "../Atom/AtomFamilyforMainBoard";
 
 const checkWinner = (values, a, b, c) => {
-  return values[a] !== 0 && values[a]!==3 && values[a] === values[b] && values[a] === values[c];
+  return (values[a] !== 0 && values[a] === values[b] && values[a] === values[c]) && values[a]!=3;
 };
 
 const winningCombinations = [

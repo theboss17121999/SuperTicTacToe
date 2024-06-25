@@ -1,5 +1,5 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { ThreeXThreeAtomFamily, TurnAtom } from "../Store/NineXNine/AtomFamilyforBoard";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { ThreeXThreeAtomFamily, TurnAtom } from "../Store/Atom/AtomFamilyforBoard";
 import { useStateById } from "./gridState";
 
 export function useClickAndTurn(id) {

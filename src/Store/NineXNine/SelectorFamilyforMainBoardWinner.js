@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { NineXNineAtomFamily } from "./AtomFamilyforMainBoard";
+import { NineXNineAtomFamily } from "../Atom/AtomFamilyforMainBoard";
 
 const createSelectorForRange = (start , winner) =>
   selector({
@@ -17,7 +17,7 @@ const createSelectorForRange = (start , winner) =>
     set: ({ set, get }, newValue) => {
       set(NineXNineAtomFamily(start), (prev) => ({
         ...prev,
-        val: (winner===1)?1:(winner===-1)?-1:3,
+        val: (winner===1)?1:(winner===2)?-1:3,
         disable: true,
       }));
       const values = [];
@@ -25,7 +25,7 @@ const createSelectorForRange = (start , winner) =>
         const atomValue = get(NineXNineAtomFamily(i));
         values.push(atomValue.val);
       }
-      values[start-1]=(winner===1)?1:(winner===-1)?-1:3;
+      values[start-1]=(winner===1)?1:(winner===2)?-1:3;
       console.log("3X3 grid", values);
 
     },
