@@ -1,24 +1,19 @@
 import { selector } from "recoil";
 import { ActiveCellAtomFamily } from "../Atom/AtomForActiveCell";
 
-const checkWinner = (values, a, b, c) => {
-  return values[a] !== 0 && values[a] === values[b] && values[a] === values[c];
-};
-
 const createSelectorForRange = (start) =>
   selector({
     key: `EnableActiveCell${start}`,
     get: ({ get }) => {
       const values = [];
-      for (let i = start; i <= end; i++) {
+      for (let i = 0; i <= 9; i++) {
         const atomValue = get(ActiveCellAtomFamily(i));
-        values.push(atomValue.disable);
+        values.push(atomValue);
       }
 
       return values;
     },
     set: ({ set, get }, newValue) => {
-      
         set(ActiveCellAtomFamily(start), (prev) => ({
             ...prev,
             disable: false, 

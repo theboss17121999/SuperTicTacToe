@@ -13,9 +13,7 @@ const createSelectorForRange = (start) =>
 
       return values;
     },
-    set: ({ set, get }, newValue) => {
-        console.log("I am trying to diable");
-      
+    set: ({ set, get }, newValue) => {      
         set(ActiveCellAtomFamily(start), (prev) => ({
             ...prev,
             disable: true, 

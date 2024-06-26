@@ -29,7 +29,6 @@ const createSelector = () =>
 
       for (const [a, b, c] of winningCombinations) {
         if (checkWinner(values, a, b, c)) {
-          console.log("And the winner is : ", values[a]);
           return values[a];
         }
       }
