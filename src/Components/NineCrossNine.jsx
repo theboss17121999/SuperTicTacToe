@@ -6,28 +6,27 @@ import { MainGridWinner } from "../Store/NineXNine/SelectorForMainBoardWinner";
 export const NineCrossNine = () => {
   const numArray = Array.from({ length: 9 }, (_, index) => index + 1);
   const winner = useRecoilValue(MainGridWinner);
-  console.log(winner);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       {winner === 0 ? (
-        <div className="grid grid-cols-3 w-45 h-45">
+        <div className="grid grid-cols-3 gap-4 w-auto">
           {numArray.map(num => (
-            <div key={num}>
+            <div key={num} className="p-1">
               <ThreeCrossThree num={num} />
             </div>
           ))}
         </div>
+      ) : winner === 3 ? (
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <div className="text-2xl font-bold text-gray-700">It is a draw</div>
+        </div>
       ) : (
-        winner === 3 ? (
-          <div className="w-45 h-45 content-center block justify-items-center">
-            <div className="w-full text-center">It is draw</div>
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <div className="text-2xl font-bold text-gray-700">
+            Winner is Player {winner === 1 ? '1' : '2'}
           </div>
-        ) : (
-          <div className="w-45 h-45 content-center block justify-items-center">
-            <div className="w-full text-center">Winner is Player {winner === 1 ? '1' : '2'}</div>
-          </div>
-        )
+        </div>
       )}
     </div>
   );
@@ -37,10 +36,12 @@ function DisplayValues({ id }) {
   const values = useValueById(id);
 
   return (
-    <div>
+    <div className="p-2 bg-white shadow-md rounded-lg">
       {values.map((value, index) => (
-        <div key={index}>Value {index}: {value}</div>
+        <div key={index} className="text-gray-700">
+          Value {index}: {value}
+        </div>
       ))}
     </div>
   );
-};
+}

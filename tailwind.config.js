@@ -19,6 +19,11 @@ export default {
         '45': '47rem',
         '72': '18rem',   // Custom height
         '84': '21rem',   // Add more custom sizes if needed
+      },
+      colors:{
+        'lightblue' : '#DDFFF7',
+        'lightblue1' : '#93E1D8',
+        'darkpurple' : '#462255'
       }
     },
   },

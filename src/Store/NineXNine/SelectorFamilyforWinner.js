@@ -28,7 +28,6 @@ const createSelectorForRange = (start, end) =>
 
       for (const [a, b, c] of winningCombinations) {
         if (checkWinner(values, a, b, c)) {
-          console.log("Winner detected:", values[a]);
           return values[a];
         }
       }

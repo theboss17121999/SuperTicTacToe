@@ -11,20 +11,21 @@ export function useClickAndTurn(id) {
   const setDisable = useStateById(parseInt(id / 10));
   const [turn, setTurn] = useRecoilState(TurnAtom);
   const justRun = useDisableone();
-  const enableGrid = useEnableone(parseInt(id%10));
+  const [grid, enableGrid] = useEnableone(parseInt(id%10));
   const isAnyWinner = useRecoilValue(NineXNineAtomFamily(parseInt(id%10)));
   const enableAll = useEnableall();
 
 
   const changeState = () => {
     setValue({ val: turn, disable: true });
+    setValue({ val: turn, disable: true });
     setDisable({ disable: true });
     setTurn(turn * -1);
     justRun();
-    if(isAnyWinner.val !==0 ){
+    console.log("Click And Turn ",grid);
+    if(isAnyWinner.val !==0){
       enableAll();
     }
-    console.log("click and turn :",isAnyWinner.val);
     enableGrid();
   };
 

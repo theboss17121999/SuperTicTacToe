@@ -1,4 +1,4 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { 
     EnableActiveCellValuesSelector1, 
     EnableActiveCellValuesSelector2, 
@@ -16,31 +16,31 @@ export function useEnableone(id){
 
     switch (id) {
         case 1:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector1);
+            selector = useRecoilState(EnableActiveCellValuesSelector1);
             break;
         case 2:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector2);
+            selector = useRecoilState(EnableActiveCellValuesSelector2);
             break;
         case 3:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector3);
+            selector = useRecoilState(EnableActiveCellValuesSelector3);
             break;
         case 4:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector4);
+            selector = useRecoilState(EnableActiveCellValuesSelector4);
             break;
         case 5:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector5);
+            selector = useRecoilState(EnableActiveCellValuesSelector5);
             break;
         case 6:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector6);
+            selector = useRecoilState(EnableActiveCellValuesSelector6);
             break;
         case 7:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector7);
+            selector = useRecoilState(EnableActiveCellValuesSelector7);
             break;
         case 8:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector8);
+            selector = useRecoilState(EnableActiveCellValuesSelector8);
             break;
         case 9:
-            selector = useSetRecoilState(EnableActiveCellValuesSelector9);
+            selector = useRecoilState(EnableActiveCellValuesSelector9);
             break;
         default:
             // Handle default case if needed
