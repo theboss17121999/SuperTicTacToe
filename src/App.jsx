@@ -1,19 +1,45 @@
-import { useState } from 'react'
-import './App.css'
-import { ThreeCrossThree } from './Components/ThreeCrossThree'
-import { NineCrossNine } from './Components/NineCrossNine'
-import { RecoilRoot } from 'recoil'
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import { RecoilRoot } from 'recoil';
+import { MainPage } from './Components/MainPage';
+import { NineCrossNine } from './Components/NineCrossNine';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Lazy load the NineCrossNine component
+// const NineCrossNineLazy = lazy(() => import('./Components/NineCrossNine'));
 
-  return (
-    <>
-      <RecoilRoot>
-        <NineCrossNine />
-      </RecoilRoot>
-    </>
-  )
+// Error boundary component
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>Something went wrong.</div>;
+    }
+
+    return this.props.children;
+  }
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter basename="/">
+      <RecoilRoot>
+        <ErrorBoundary>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/game" element={<NineCrossNine />} />
+              <Route path="/" element={<MainPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+      </RecoilRoot>
+    </BrowserRouter>
+  );
+}
+
+export default App;
