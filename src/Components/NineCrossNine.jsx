@@ -8,7 +8,7 @@ export const NineCrossNine = () => {
   const winner = useRecoilValue(MainGridWinner);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4  bg-stone-300">
       {winner === 0 ? (
         <div className="grid grid-cols-3 gap-4 w-auto">
           {numArray.map(num => (
@@ -22,8 +22,8 @@ export const NineCrossNine = () => {
           <div className="text-2xl font-bold text-gray-700">It is a draw</div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center w-full h-full">
-          <div className="text-2xl font-bold text-gray-700">
+        <div className="flex flex-col items-center justify-center">
+          <div className="font-bold text-gray-700 text-6xl font-lilita">
             Winner is Player {winner === 1 ? '1' : '2'}
           </div>
         </div>

@@ -47,19 +47,19 @@ export const ThreeCrossThree = ({ num }) => {
       {winner === 0 ? (
         <div
           className={`grid grid-cols-3 grid-rows-3 w-21 h-21 m-1 p-1 border-2 rounded-lg ${
-            atomValue.disable ? 'bg-gray-500' : 'bg-purple-700'
+            atomValue.disable ? 'bg-white' : 'bg-lime-200'
           }`}
         >
           {NineXNine1.slice((num - 1) * 9, num * 9).map(item => renderBox(item.id, item.val))}
         </div>
       ) : winner === 3 ? (
-        <div className="bg-gray-300 w-21 h-21 m-1 p-1 border-2 rounded-lg flex items-center justify-center">
-          It is a draw
+        <div className="bg-red-400 w-21 h-21 m-1 p-1 border-2 rounded-lg flex items-center justify-center text-4xl font-lilita">
+          Draw
         </div>
       ) : (
-        <div className="bg-gray-200 w-21 h-21 m-1 p-1 border-2 rounded-lg flex items-center justify-center">
+        <div className={`w-21 h-21 m-1 p-1 border-2 rounded-lg ${winner === 1 ? 'bg-cyan-400' : 'bg-green-400'}`}>
           <div className="w-full">
-            {useRenderContent(winner)}
+            {useRenderContent(winner, false)}
           </div>
         </div>
       )}
@@ -89,14 +89,18 @@ function Box({ id, disable }) {
       onClick={changeState}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-7 h-7 max-h-full border-2 border-indigo-600 transition-transform duration-200 ease-in-out transform hover:scale-105"
+      className={` max-h-full border-2 ${disable ? 'border-black' : 'border-green-500'}`}
       disabled={value.disable !== false || disable}
     >
-      <div className="flex items-center justify-center w-full h-full">
-        <div className="z-2">
-          {useRenderContent(value.val, hover)}
-        </div>
-        {isHovered && value.val === 0 && useRenderContent(turn, hover)}
+      <div className="w-full h-full">
+        {value.val !== 0 && (<div className="">
+            {useRenderContent(value.val)}
+          </div>)
+        }
+        {isHovered && value.val === 0 && (<div className="">
+            {useRenderContent(turn, hover)}
+          </div>)
+        }
       </div>
     </button>
   );

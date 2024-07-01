@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'lilita': ['Lilita One', 'cursive'],  // Add the custom font here
+      },
       width: {
         '7': '5rem',
         '21': '15rem',
