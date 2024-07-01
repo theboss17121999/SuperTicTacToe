@@ -44,4 +44,5 @@ export default {
     },
   },
   plugins: [],
+  base: '/SuperTicTacToe/',
 }

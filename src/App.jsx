@@ -23,19 +23,16 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   return (
-    <div>
-      hello
-    </div>
-    // <BrowserRouter basename="/SuperTicTacToe/">
-    //   <RecoilRoot>
-    //     <ErrorBoundary>
-    //       <Routes>
-    //         <Route path="/game" element={<NineCrossNine />} />
-    //         <Route path="/" element={<MainPage />} />
-    //       </Routes>
-    //     </ErrorBoundary>
-    //   </RecoilRoot>
-    // </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/game" element={<NineCrossNine />} />
+          </Routes>
+        </ErrorBoundary>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 
