@@ -5,10 +5,6 @@ import { RecoilRoot } from 'recoil';
 import { MainPage } from './Components/MainPage';
 import { NineCrossNine } from './Components/NineCrossNine';
 
-// Lazy load the NineCrossNine component
-// const NineCrossNineLazy = lazy(() => import('./Components/NineCrossNine'));
-
-// Error boundary component
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
 
@@ -27,7 +23,7 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/SuperTicTacToe">
       <RecoilRoot>
         <ErrorBoundary>
           <Suspense fallback={<div>Loading...</div>}>
@@ -40,7 +36,6 @@ function App() {
       </RecoilRoot>
     </BrowserRouter>
   );
-
 }
 
 export default App;
