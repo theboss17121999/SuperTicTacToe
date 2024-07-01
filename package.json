@@ -1,9 +1,13 @@
 {
+  "homepage": "https://theboss17121999.github.io/SuperTicTacToe",
   "name": "supertictactoe",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
