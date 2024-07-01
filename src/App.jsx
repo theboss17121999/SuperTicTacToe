@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   return (
-    <BrowserRouter basename="/SuperTicTacToe">
+    <BrowserRouter basename="/SuperTicTacToe/">
       <RecoilRoot>
         <ErrorBoundary>
           <Routes>
