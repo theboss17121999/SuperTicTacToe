@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { RecoilRoot } from 'recoil';
@@ -26,12 +26,10 @@ function App() {
     <BrowserRouter basename="/SuperTicTacToe">
       <RecoilRoot>
         <ErrorBoundary>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path="/game" element={<NineCrossNine />} />
-              <Route path="/" element={<MainPage />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/game" element={<NineCrossNine />} />
+            <Route path="/" element={<MainPage />} />
+          </Routes>
         </ErrorBoundary>
       </RecoilRoot>
     </BrowserRouter>
