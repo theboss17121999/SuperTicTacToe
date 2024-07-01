@@ -27,12 +27,12 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/SuperTicTacToe">
       <RecoilRoot>
         <ErrorBoundary>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-              <Route path="/game" element={<NineCrossNine />} />
+              <Route path="/game" element={<NineCrossNineLazy />} />
               <Route path="/" element={<MainPage />} />
             </Routes>
           </Suspense>
@@ -40,6 +40,7 @@ function App() {
       </RecoilRoot>
     </BrowserRouter>
   );
+
 }
 
 export default App;
