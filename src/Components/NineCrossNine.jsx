@@ -19,7 +19,7 @@ export const NineCrossNine = () => {
         </div>
       ) : winner === 3 ? (
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <div className="text-2xl font-bold text-gray-700">It is a draw</div>
+          <div className="text-8xl font-bold text-gray-700">Draw</div>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center">
