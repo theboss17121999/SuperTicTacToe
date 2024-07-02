@@ -22,7 +22,6 @@ export function useClickAndTurn(id) {
     setDisable({ disable: true });
     setTurn(turn * -1);
     justRun();
-    console.log("Click And Turn ",grid);
     if(isAnyWinner.val !==0){
       enableAll();
     }

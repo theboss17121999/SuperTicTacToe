@@ -26,8 +26,6 @@ const createSelectorForRange = (start , winner) =>
         values.push(atomValue.val);
       }
       values[start-1]=(winner===1)?1:(winner===2)?-1:3;
-      console.log("3X3 grid", values);
-
     },
   });
 

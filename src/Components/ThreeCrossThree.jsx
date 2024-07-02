@@ -46,18 +46,18 @@ export const ThreeCrossThree = ({ num }) => {
     <div>
       {winner === 0 ? (
         <div
-          className={`grid grid-cols-3 grid-rows-3 w-21 h-21 m-1 p-1 border-2 rounded-lg ${
+          className={`grid grid-cols-3 grid-rows-3 w-36 h-36 md:w-21 md:h-21 m-1 p-1 border-2 rounded-lg ${
             atomValue.disable ? 'bg-white' : 'bg-lime-200'
           }`}
         >
           {NineXNine1.slice((num - 1) * 9, num * 9).map(item => renderBox(item.id, item.val))}
         </div>
       ) : winner === 3 ? (
-        <div className="bg-red-400 w-21 h-21 m-1 p-1 border-2 rounded-lg flex items-center justify-center text-4xl font-lilita">
+        <div className="bg-red-400 w-36 h-36 md:w-21 md:h-21 m-1 p-1 border-2 rounded-lg flex items-center justify-center text-4xl font-lilita">
           Draw
         </div>
       ) : (
-        <div className={`w-21 h-21 m-1 p-1 border-2 rounded-lg ${winner === 1 ? 'bg-cyan-400' : 'bg-green-400'}`}>
+        <div className={`w-36 h-36 md:w-21 md:h-21 m-1 p-1 border-2 rounded-lg ${winner === -1 ? 'bg-cyan-400' : 'bg-green-400'}`}>
           <div className="w-full">
             {useRenderContent(winner, false)}
           </div>
