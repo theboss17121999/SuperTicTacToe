@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../Style/SignIn.css';
+import { useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         // handle form submission here
@@ -35,12 +37,12 @@ export const SignIn = () => {
 
                 <p className="signup-link">
                     No account?
-                    <a href="" className="up">Sign up!</a>
+                    <button className="pl-1 text-blue-400" style={{ border: 'none' }} onClick={() => navigate(`/SignUp`) }>Sign Up</button>
                 </p>
                 <div className='pt-4'>
                 <p className="signup-link">
-                    Continue with login?
-                    <a href="" className="up">Start game</a>
+                    Continue without login?
+                    <button className="pl-1 text-blue-400" style={{ border: 'none' }}  onClick={() => navigate(`/options`)}>Start game</button>
                 </p>
                 </div>
             </form>

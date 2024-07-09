@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../Style/SignUp.css';
+import { useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,7 +13,7 @@ export const SignUp = () => {
 
   const postData = async (e) => {
     e.preventDefault(); 
-    if(password1===password2){
+    if(password1 === password2){
         try {
         const response = await fetch('http://localhost:3000/SignUpUser', {
             method: 'POST',
@@ -37,8 +39,8 @@ export const SignUp = () => {
         setMessage('An error occurred. Please try again.');
         }
     }
-    else{
-        console.log("help");
+    else {
+        setMessage('Passwords do not match.');
     }
   };
 
@@ -50,72 +52,84 @@ export const SignUp = () => {
             <p className="title">Register</p>
             <p className="message">Signup now and get full access to our app.</p>
             <div className="flex">
+              <div className="input-group pt-2">
+                <label>
+                  <input
+                    required
+                    placeholder=""
+                    type="text"
+                    className="input"
+                    aria-label="Firstname"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <span>Firstname</span>
+                </label>
+              </div>
+              <div className="input-group pt-2">
+                <label>
+                  <input
+                    required
+                    placeholder=""
+                    type="text"
+                    className="input"
+                    aria-label="Lastname"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                  <span>Lastname</span>
+                </label>
+              </div>
+            </div>
+            <div className="input-group pt-2">
               <label>
                 <input
                   required
                   placeholder=""
-                  type="text"
+                  type="email"
                   className="input"
-                  aria-label="Firstname"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  aria-label="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <span>Firstname</span>
-              </label>
-              <label>
-                <input
-                  required
-                  placeholder=""
-                  type="text"
-                  className="input"
-                  aria-label="Lastname"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-                <span>Lastname</span>
+                <span>Email</span>
               </label>
             </div>
-            <label>
-              <input
-                required
-                placeholder=""
-                type="email"
-                className="input"
-                aria-label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <span>Email</span>
-            </label>
-            <label>
-              <input
-                required
-                placeholder=""
-                type="password"
-                className="input"
-                aria-label="Password"
-                value={password1}
-                onChange={(e) => setPassword1(e.target.value)}
-              />
-              <span>Password</span>
-            </label>
-            <label>
-              <input
-                required
-                placeholder=""
-                type="password"
-                className="input"
-                aria-label="Confirm Password"
-                value={password2}
-                onChange={(e) => setPassword2(e.target.value)}
-              />
-              <span>Confirm password</span>
-            </label>
-            <button type="submit" className="submit">
-              Submit
-            </button>
+            <div className="input-group pt-2">
+              <label>
+                <input
+                  required
+                  placeholder=""
+                  type="password"
+                  className="input"
+                  aria-label="Password"
+                  value={password1}
+                  onChange={(e) => setPassword1(e.target.value)}
+                />
+                <span>Password</span>
+              </label>
+            </div>
+            <div className="input-group pt-2">
+              <label>
+                <input
+                  required
+                  placeholder=""
+                  type="password"
+                  className="input"
+                  aria-label="Confirm Password"
+                  value={password2}
+                  onChange={(e) => setPassword2(e.target.value)}
+                />
+                <span>Confirm password</span>
+              </label>
+            </div>
+            <div className='pt-4'>
+              <button type="submit" className="submit">
+                Submit
+              </button>
+            </div>
             <p className="signin">
-              Already have an account? <a href="#">Signin</a>
+              Already have an account? <button className="pl-1 text-blue-400" style={{ border: 'none' }}  type="button" onClick={() => navigate(`/signIn`)}>Signin</button>
             </p>
           </form>
         </section>

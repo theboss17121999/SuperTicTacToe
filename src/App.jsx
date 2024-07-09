@@ -27,9 +27,10 @@ function App() {
   return (
     <ErrorBoundary>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/options" element={<MainPage />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         <Route path="/game" element={<NineCrossNine />} />
       </Routes>
     </ErrorBoundary>
