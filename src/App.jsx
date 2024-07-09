@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import { MainPage } from './Components/MainPage';
 import { NineCrossNine } from './Components/NineCrossNine';
 import { SignUp } from './Components/SignUp';
+import { SignIn } from './Components/SignIn';
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/SignIn" element={<SignIn />} />
         <Route path="/game" element={<NineCrossNine />} />
       </Routes>
     </ErrorBoundary>
