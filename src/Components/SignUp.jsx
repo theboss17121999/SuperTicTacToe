@@ -36,7 +36,7 @@ export const SignUp = () => {
             setMessage(data.msg);
         }
         } catch (error) {
-        setMessage('An error occurred. Please try again.');
+        setMessage('Unable to connect to the server');
         }
     }
     else {
@@ -128,12 +128,24 @@ export const SignUp = () => {
                 Submit
               </button>
             </div>
+            {message && (
+              <p className="message" style={{ marginTop: '10px', color: '#ff6347' }}>
+                {message}
+              </p>
+            )}
             <p className="signin">
-              Already have an account? <button className="pl-1 text-blue-400" style={{ border: 'none' }}  type="button" onClick={() => navigate(`/signIn`)}>Signin</button>
+              Already have an account?{' '}
+              <button
+                className="pl-1 text-blue-400"
+                style={{ border: 'none' }}
+                type="button"
+                onClick={() => navigate(`/signIn`)}
+              >
+                Sign in
+              </button>
             </p>
           </form>
         </section>
-        {message && <p>{message}</p>}
       </div>
     </div>
   );
