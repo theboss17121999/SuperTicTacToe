@@ -10,7 +10,6 @@ export const SignIn = () => {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // handle form submission here
         try {
             const response = await fetch(`http://localhost:3000/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`, {
                 method: 'GET',
